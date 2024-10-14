@@ -31,7 +31,6 @@ class Account(db.Model):
         email_regex = r'^[^\s@]+@[^\s@]+\.[^\s@]+$'
         if not re.match(email_regex, value):
             raise ValueError(f"Invalid email address: {value}.")
-
         return value
 
     @validates('country')
@@ -53,7 +52,6 @@ class Account(db.Model):
         if value not in allowed_currencies:
             raise ValueError(f"Invalid currency: {value}. Must be one of {allowed_currencies}.")
         return value
-
     def __init__(self, name, currency, country, email, type):
         self.name = name
         self.account_number = ''.join(random.choices(string.digits, k=20))
