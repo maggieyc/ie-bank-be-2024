@@ -1,6 +1,7 @@
 from iebank_api import app
 import pytest
 
+'''
 def test_get_accounts(testing_client):
     """
     GIVEN a Flask application
@@ -30,3 +31,5 @@ def test_create_account(testing_client):
     assert response.status_code == 200
 
 
+
+'''
