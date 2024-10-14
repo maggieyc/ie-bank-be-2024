@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, abort
 from iebank_api import db, app
 from iebank_api.models import Account
 
@@ -42,6 +42,8 @@ def get_accounts():
 @app.route('/accounts/<int:id>', methods=['GET'])
 def get_account(id):
     account = Account.query.get(id)
+    if account is None:
+        abort(404)  # Send 404 if account is not found
     return format_account(account)
 
 @app.route('/accounts/<int:id>', methods=['PUT'])
